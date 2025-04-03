@@ -65,37 +65,31 @@ export default defineConfig({
 						list: true,
 						options: [
 							{
-								value: "technical",
-								label: "Technical",
+								value: "tecnico",
+								label: "Tecnico",
+							},
+							
+							{
+								value: "eventos",
+								label: "Eventos",
 							},
 							{
-								value: "advice",
-								label: "Advice",
+								value: "aprendizados",
+								label: "Aprendizados",
 							},
 							{
-								value: "events",
-								label: "Events",
+								value: "github",
+								label: "Github",
 							},
 							{
-								value: "learning",
-								label: "Learning",
+								value: "devrel",
+								label: "Devrel",
 							},
 							{
-								value: "meta",
-								label: "Meta",
+								value: "pessoal",
+								label: "Pessoal",
 							},
-							{
-								value: "work",
-								label: "Work",
-							},
-							{
-								value: "personal",
-								label: "Personal",
-							},
-							{
-								value: "musings",
-								label: "Musings",
-							},
+
 						],
 					},
 					{
