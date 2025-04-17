@@ -4,19 +4,73 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 ---
 
 <header>
+	<nav>
+		<HeaderLink href="/">home</HeaderLink>
+		<HeaderLink href="/posts">posts</HeaderLink>
+	</nav>
 	<div class="header-section">
-		<div class="header-frame">
-			<h1>{SITE_TITLE}</h1>
-			<h2>{SITE_DESCRIPTION}</h2>
+		<div class="header-frame" style="display: flex; align-items: center; gap: 1rem;">
+			<!-- Imagem movida para cá -->
+			<img 
+				src="/minha-foto.png" 
+				alt="Minha foto em formato de abacate" 
+				width="48"  
+				height="60" 
+				class="avocado-image header-avocado" 
+			/>
+			<div>
+				<h1>{SITE_TITLE}</h1>
+				<h2>{SITE_DESCRIPTION}</h2>
+			</div>
+			<button id="theme-toggle" aria-label="Alternar tema" style="background:none;border:none;cursor:pointer;margin-left:auto;"> <!-- margin-left: auto para empurrar para a direita -->
+				<svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle cx="12" cy="12" r="5" />
+					<path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+				</svg>
+			</button>
 		</div>
 	</div>
 </header>
-<nav>
-	<HeaderLink href="/">home</HeaderLink>
-	<HeaderLink href="/posts">posts</HeaderLink>
-</nav>
+
+<script>
+	const toggle = document.getElementById('theme-toggle');
+	const icon = document.getElementById('theme-icon');
+	function setDarkMode(on) {
+		document.body.classList.toggle('dark-mode', on);
+		document.documentElement.classList.toggle('dark-mode', on); // Adiciona/remover no <html>
+		if (icon) {
+			icon.innerHTML = on
+				? '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z" />'
+				: '<circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />';
+		}
+		localStorage.setItem('dark-mode', on ? '1' : '0');
+	}
+	if (toggle) {
+		toggle.addEventListener('click', () => {
+			const isDark = document.body.classList.contains('dark-mode');
+			setDarkMode(!isDark);
+		});
+	}
+	// Inicialização
+	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const saved = localStorage.getItem('dark-mode');
+	setDarkMode(saved === '1' || (saved === null && prefersDark));
+</script>
 <style>
 	h2 {
 		margin: 0.5em 0;
+	}
+	#theme-toggle svg {
+		color: #39ff14;
+		transition: color 0.2s;
+	}
+	body.dark-mode #theme-toggle svg {
+		color: #ffd700;
+	}
+	/* Ajustes para a imagem no header */
+	.header-avocado {
+		width: 100px; /* Aumentado de 80px */
+		height: 125px; /* Aumentado de 100px */
+		margin: 0; /* Remover margens automáticas */
 	}
 </style>

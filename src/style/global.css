@@ -4,19 +4,16 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 :root {
-	--white: #efefef;
-	--transwhite: rgba(239, 239, 239, 0.7);
-	--moretranswhite: rgba(239, 239, 239, 0.1);
-	--black: #252525;
-	--transblack: rgba(37, 37, 37, 0.7);
-	--moretransblack: rgba(37, 37, 37, 0.1);
-	--gray: #6b6b6b;
-	--highlight: #e5ffc3;
-	--red: #e4002b;
-	--green: #24d05a;
-	--pink: #eb4888;
-	--blue: #10a2f5;
-	--yellow: #e9bc3f;
+	--white: #f8faf5;  /* Um branco suave esverdeado */
+	--transwhite: rgba(248, 250, 245, 0.7);
+	--moretranswhite: rgba(248, 250, 245, 0.1);
+	--black: #1a2f1c;  /* Um verde muito escuro para texto */
+	--transblack: rgba(26, 47, 28, 0.7);
+	--moretransblack: rgba(26, 47, 28, 0.1);
+	--gray: #5b7559;   /* Um verde acinzentado */
+	--highlight: #cde9b5; /* Verde claro para destaque */
+	--red: #ff6b6b;    /* Mantendo cores de destaque mas mais suaves */
+	--green: #568203;  /* Verde abacate mais vibrante */
 }
 
 ::selection {
@@ -57,6 +54,21 @@ button.dark-mode button {
 body.dark-mode nav {
 	background: var(--transblack);
 }
+body.dark-mode nav a {
+	color: #e0ebd7; /* Verde muito claro para links no menu em modo escuro */
+}
+
+html.dark-mode, body.dark-mode {
+  background: #1a2f1c !important;
+  color: #e0ebd7 !important;
+}
+html.dark-mode {
+  background: #1a2f1c !important;
+}
+body.dark-mode a, html.dark-mode a {
+  color: #e0ebd7 !important;
+  text-decoration-color: #39ff14 !important;
+}
 
 .tag-title {
 	font-weight: 400;
@@ -65,11 +77,11 @@ body.dark-mode nav {
 
 @media (prefers-color-scheme: dark) {
 	::selection {
-		background-color: #0f0f0f;
+		background-color: #2d4a30; /* Verde escuro para seleção */
 		color: var(--white);
 	}
 	:root {
-		--gray: #a4a4a4;
+		--gray: #8baa89; /* Verde mais claro para melhor legibilidade */
 	}
 	html,
 	body,
@@ -80,23 +92,23 @@ body.dark-mode nav {
 	body em,
 	body blockquote,
 	body .go-home {
-		background: var(--black);
-		color: var(--white);
+		background: #1a2f1c; /* Verde muito escuro para o fundo */
+		color: #e0ebd7; /* Verde muito claro para o texto */
 	}
 	body nav {
 		background: var(--transblack);
 	}
 	body code {
-		background-color: var(--moretranswhite);
+		background-color: rgba(224, 235, 215, 0.1); /* Verde claro transparente */
 	}
 	body a {
-		color: var(--white);
+		color: #a7c49c; /* Verde médio para links */
 	}
 	body .tag {
 		color: var(--gray);
 	}
 	.tag-title {
-		color: var(--white);
+		color: #e0ebd7; /* Verde muito claro */
 	}
 }
 
@@ -117,6 +129,7 @@ a {
 	color: var(--black);
 	text-decoration-thickness: 0.3ex;
 	text-underline-offset: 0.3ex;
+	text-decoration-color: #39ff14 !important;
 }
 
 nav {
@@ -230,9 +243,7 @@ h3 {
 	flex-wrap: wrap;
 }
 
-.header-frame {
-	max-width: 350px;
-}
+
 
 article :not(.article-title) {
 	line-height: 1.8;
@@ -264,4 +275,15 @@ ul li time {
 	nav a:not(:last-child) {
 		padding: 0;
 	}
+}
+
+/* Estilo para a imagem em formato de abacate */
+.avocado-image {
+	display: block; /* Para aplicar margens automáticas */
+	margin: 2rem auto 1rem auto; /* Centralizar e adicionar margens como o SVG anterior */
+	width: 180px; /* Largura igual ao SVG anterior */
+	height: 220px; /* Altura igual ao SVG anterior */
+	object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+	border-radius: 48% 52% 50% 50% / 69% 68% 32% 31%; /* Seu border-radius! */
+	/* background-color: red; /* Removido - era do seu exemplo */
 }
